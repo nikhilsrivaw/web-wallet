@@ -1,18 +1,27 @@
-import React, { useState } from 'react'
-import { generateMnemonic } from 'bip39'
+import React from 'react'
+import React, { FC, useMemo } from 'react';
+import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+import {
+    WalletModalProvider,
+    WalletDisconnectButton,
+    WalletMultiButton
+} from '@solana/wallet-adapter-react-ui';
+import { clusterApiUrl } from '@solana/web3.js';
+
+// Default styles that can be overridden by your app
+import '@solana/wallet-adapter-react-ui/styles.css';
+
 
 const App = () => {
-  const [mnemonic,setMnemonic]  = useState("")
   return (
     <>
-        <button onClick={async function(){    
-          const mn = await generateMnemonic();
-          setMnemonic(mn)
-        }}> Create seed Phrase </button>
-        <input type = "text" value = {mnemonic}></input>
+
       
     </>
   )
 }
 
 export default App
+
